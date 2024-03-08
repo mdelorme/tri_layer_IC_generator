@@ -193,12 +193,13 @@ p[dom3] = p2 * (T[dom3]/T2)**(m2+1)
 
 R = 1.0
 Sen = gamma / (gamma-1.0) * np.log(T) - R*np.log(p)
+dSdr = np.gradient(Sen, z[0]-z[1])
 
 fig, ax = plt.subplots(2, 2, figsize=(8, 8))
 ax[0,0].plot(z, T, '-r')
 ax[0,1].plot(z, rho, '-r')
 ax[1,0].plot(z, p, '-r')
-ax[1,1].plot(z, Sen, '-r')
+ax[1,1].plot(z, dSdr, '-r')
 
 for i in range(2):
   for j in range(2):
@@ -210,7 +211,7 @@ ax[1,1].set_xlabel('z (depth)')
 ax[0,0].set_ylabel('Temperature')
 ax[0,1].set_ylabel('Density')
 ax[1,0].set_ylabel('Pressure')
-ax[1,1].set_ylabel('Entropy')
+ax[1,1].set_ylabel('Entropy gradient')
 title = r'Tri-Layer initial conditions for $\theta_1={:.1f}$, $Ra={:.2e}$, $Pr={:.3f}$, $C_k={:.3f}$'.format(theta1, Ra, sigma, Ck)
 plt.suptitle(title)
 plt.tight_layout()
