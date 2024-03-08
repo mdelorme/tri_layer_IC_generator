@@ -1,0 +1,100 @@
+[run]
+nstepmax             = 200000000
+
+tend                 = {}
+
+output_timeslice     = {}
+checkpoint_timeslice = {}              
+
+enable_checkpoint    = true
+enable_output        = true                
+
+initial_conditions   = tri_layer
+nlog=10
+
+[mesh]
+ndim                 = 3
+
+boundary_type_xmin   = periodic            
+boundary_type_xmax   = periodic            
+boundary_type_ymin   = periodic
+boundary_type_ymax   = periodic
+boundary_type_zmin   = userdef
+boundary_type_zmax   = userdef             
+
+userdef_bc_type      = tri_layer
+                 
+xmin                 = 0.0
+xmax                 = {}
+ymin                 = 0.0
+ymax                 = {}
+zmin                 = 0.0                 
+zmax                 = {}                 
+
+[amr]
+bx                   = 4                   
+by                   = 4                   
+bz                   = 4
+
+level_max            = {}
+level_min            = {}
+
+coarse_oct_resolution_x = {}
+coarse_oct_resolution_y = {}
+coarse_oct_resolution_z = {}                  
+
+cycle_frequency          = 1000000000          
+load_balancing_frequency = 1000000000      
+
+[boundary_conditions]
+bctc_top_value={}
+bctc_bot_value={}
+
+[tri_layer]
+k1                   = {}                 
+k2                   = {}
+m1                   = {}                  
+m2                   = {}                
+seed                 = 12345                
+theta1               = {}                
+theta2               = {}   
+tr_thick             = 0.05                 
+z1                   = {}                  
+z2                   = {} 
+T0                   = {}
+rho0                 = {}
+
+perturbation         = 1.0e-4                 
+
+[dt]
+dt_kernel     = Compute_dt_hydro,Compute_dt_parabolic
+hydro_cfl     = {}
+parabolic_cfl = {}
+
+[gravity]
+gravity_type         = 1                   
+gx                   = 0.0                 
+gy                   = 0.0
+gz                   = {}
+
+[hydro]
+gamma0               = 1.6666666666666667  
+riemann              = hllc                
+update               = HydroUpdate_euler
+well_balanced        = true
+
+[output]
+outputdir            = ./                  
+outputprefix         = tri_layer               
+write_variables      = ioct,rho,e_tot,rho_vx,rho_vy,rho_vz
+
+[thermal_conduction]
+kappa                = {}
+diffusivity_mode     = analytical
+kappa_mode           = tri_layer           
+update               = ParabolicUpdate_explicit
+
+[viscosity]
+mu                   = {}           
+mu_mode              = constant             
+update               = ParabolicUpdate_explicit
