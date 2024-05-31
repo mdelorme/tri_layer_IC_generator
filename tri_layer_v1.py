@@ -221,7 +221,7 @@ ax[1,1].set_ylabel('Entropy gradient')
 title = r'Tri-Layer initial conditions for $\theta_1={:.1f}$, $Ra={:.2e}$, $Pr={:.3f}$, $C_k={:.3f}$'.format(theta1, Ra, sigma, Ck)
 plt.suptitle(title)
 plt.tight_layout()
-fname = 'initial_profile.png'
+fname = name + '_initial_profile.png'
 plt.savefig(fname)
 stdout(f' . Initial profile saved to {fname}')
 
@@ -231,7 +231,7 @@ ax.plot(z, cs)
 ax.set_xlabel('z (depth)')
 ax.set_ylabel('Speed of sound')
 plt.tight_layout()
-fname = 'speed_of_sound.png'
+fname = name + '_speed_of_sound.png'
 plt.savefig(fname)
 stdout(f' . Speed of sound profile saved to {fname}')
 
