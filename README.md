@@ -1,6 +1,6 @@
 # Initial conditions generator for a tri-layer convective setup in Dyablo or FV2D
 
-Simple python script generating `.ini` files for fv2d and dyablo for a three-layer setup.
+Simple python script generating `.ini` files for dyablo for a three-layer setup or fv2d/dyablo for a sandwich setup.
 
 The setup is loosely based on the following papers : 
 
@@ -14,20 +14,23 @@ The setup is loosely based on the following papers :
 
  ## Usage
 
- The script is simply called directly in command line. Fill in the values for the script or use the default ones to get an `.ini` file for dyablo, one for FV2D, and some IC plots describing the setup generated.
+ ### Tri Layer setup
 
+To build a tri-layer setup for dyablo, start the interactive ic generator :
  ```bash
- python3 ic_generator.py
+ python3 tri_layer_interactive.py
  ```
 
- The code will generate the files in the same folder as the one the script was called on. Two figures are generated, one with the initial profiles : 
+ The code will display an interactive figure allowing you to fine-tune the model you wish to generate :
 
- ![Initial profiles of a tri-layer setup](figs/initial_profile.png)
+ ![Matplotlib window allowing the fine tuning of a model in terms of parameters](figs/example_profile.png)
 
- and one with the speed of sound in the domain : 
+If you're satisfied with the model, you can click on "generate model". The script will close the window (save the profile before if you wish to keep an image) and will move on to ask you other quantities related to the run. Finally a `.ini` file will be generated.
 
- ![Initial profile of the speed of sound](figs/speed_of_sound.png)
+### Sandwich setup
+
+The sandiwch setup is a tri-layer setup with the first and last zone having the exact same properties. It should not be used anymore but can still be generated using the `tri_layer_v1.py` script.
 
  ## Description of the calculations
 
- TODO
+ All the calculations necessary for the generation of the model can be found in [here](docs/Tri_Layer_Setup.pdf)
