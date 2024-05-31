@@ -89,7 +89,7 @@ K2      = K1 * (m2+1.0)/(m1+1.0)
 theta2  = theta1*K1/K2
 
 # Polytropic model
-T0 = (theta1*dz1 + theta2*dz2) / (chi_rho-1.0)
+T0 = theta1*dz1/(chi_rho**(1.0/m1)-1.0) - theta2*dz2#(theta1*dz1 + theta2*dz2) / (chi_rho**(1.0/m1))
 T1 = T0 + theta2*dz2
 T2 = T1 + theta1*dz1
 rho1 = rho0 * (T1/T0)**m2
