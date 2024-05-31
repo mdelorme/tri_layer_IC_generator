@@ -33,4 +33,4 @@ The sandiwch setup is a tri-layer setup with the first and last zone having the 
 
  ## Description of the calculations
 
- All the calculations necessary for the generation of the model can be found in [here](docs/Tri_Layer_Setup.pdf)
+ All the calculations necessary for the generation of the model can be found in [here](doc/Tri_Layer_Setup.pdf)
